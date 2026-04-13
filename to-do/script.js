@@ -1,11 +1,24 @@
-var factor = "anyone"
-var fplayer = "same aas actor"
-var fmovie= "Anything"
+function addTask() {
+        let task = document.getElementById("task").value;
+        if (task === "") return;
 
-function favorite(){
-    console.log("actor :" + factor)
-    console.log("player :" + fplayer)
-    console.log("movie :" + fmovie)
-}
+        let li = document.createElement("li");
 
-favorite()
+        let span = document.createElement("span");
+        span.innerText = task;
+        span.onclick = function () {
+            span.classList.toggle("done");
+        };
+
+        let removeBtn = document.createElement("button");
+        removeBtn.innerText = "Remove";
+        removeBtn.onclick = function () {
+            li.remove();
+        };
+
+        li.appendChild(span);
+        li.appendChild(removeBtn);
+
+        document.getElementById("list").appendChild(li);
+        document.getElementById("task").value = "";
+    }
