@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do App</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input {
+            padding: 8px;
+        }
+
+        button {
+            padding: 8px;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+
+        li {
+            margin: 10px;
+        }
+
+        .done {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>To-Do App</h2>
+    <input id="task" placeholder="Enter task">
+    <button onclick="addTask()">Add</button>
+    <ul id="list"></ul>
+
+
+</body>
+<script>
+    function addTask() {
+        let task = document.getElementById("task").value;
+        if (task === "") return;
+
+        let li = document.createElement("li");
+
+        let span = document.createElement("span");
+        span.innerText = task;
+        span.onclick = function () {
+            span.classList.toggle("done");
+        };
+
+        let removeBtn = document.createElement("button");
+        removeBtn.innerText = "Remove";
+        removeBtn.onclick = function () {
+            li.remove();
+        };
+
+        li.appendChild(span);
+        li.appendChild(removeBtn);
+
+        document.getElementById("list").appendChild(li);
+        document.getElementById("task").value = "";
+    }
+</script>
+
+</html>
